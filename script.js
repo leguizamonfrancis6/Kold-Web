@@ -1,142 +1,99 @@
+const heroVideo = document.querySelector('.hero-video');
+
+// The video starts loading only once the hero is near the viewport, and is skipped for reduced motion.
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  heroVideo.remove();
+} else {
+  heroVideo.addEventListener('loadeddata', () => heroVideo.classList.add('is-visible'), { once: true });
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry.isIntersecting) return;
+      const isMobile = window.matchMedia('(max-width: 760px)').matches;
+      heroVideo.src = isMobile ? heroVideo.dataset.mobileSrc : heroVideo.dataset.src;
+      observer.disconnect();
+    },
+    { rootMargin: '200px 0px' }
+  );
+  observer.observe(heroVideo);
+}
+
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
-const contactForm = document.querySelector('#contact-form');
-const queryField = document.querySelector('#contact-form textarea');
-const counter = document.querySelector('#counter');
-const formStatus = document.querySelector('#form-status');
-const heroVideo = document.querySelector('.hero-video');
-const heroSection = document.querySelector('.hero');
-const shouldLoadHeroVideo = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-if (!shouldLoadHeroVideo && heroVideo) {
-  heroVideo.remove();
-}
-
-const loadHeroVideo = () => {
-  if (!heroVideo || heroVideo.dataset.loaded === 'true') return;
-
-  const source = document.createElement('source');
-  const isMobileViewport = window.matchMedia('(max-width: 760px)').matches;
-  source.src = isMobileViewport ? heroVideo.dataset.mobileSrc : heroVideo.dataset.src;
-  source.type = 'video/mp4';
-  heroVideo.appendChild(source);
-  heroVideo.dataset.loaded = 'true';
-  heroVideo.load();
+const setMenuOpen = (isOpen) => {
+  mainNav.classList.toggle('is-open', isOpen);
+  menuToggle.setAttribute('aria-expanded', String(isOpen));
 };
 
-if (heroVideo) {
-  heroVideo.addEventListener('loadeddata', () => {
-    heroVideo.classList.add('is-visible');
-  });
+menuToggle.addEventListener('click', () => setMenuOpen(!mainNav.classList.contains('is-open')));
 
-  if ('IntersectionObserver' in window && heroSection) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            loadHeroVideo();
-            observer.disconnect();
-          }
-        });
-      },
-      { rootMargin: '200px 0px' }
-    );
-
-    observer.observe(heroSection);
-  } else {
-    window.addEventListener('load', loadHeroVideo, { once: true });
-  }
-}
-
-const closeMenu = () => {
-  if (!mainNav || !menuToggle) return;
-  mainNav.classList.remove('is-open');
-  menuToggle.setAttribute('aria-expanded', 'false');
-};
-
-if (menuToggle && mainNav) {
-  menuToggle.addEventListener('click', () => {
-    const isOpen = mainNav.classList.toggle('is-open');
-    menuToggle.setAttribute('aria-expanded', String(isOpen));
-  });
-
-  document.addEventListener('click', (event) => {
-    const clickedInsideNav = mainNav.contains(event.target);
-    const clickedToggle = menuToggle.contains(event.target);
-    if (!clickedInsideNav && !clickedToggle) {
-      closeMenu();
-    }
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closeMenu();
-    }
-  });
-}
-
-document.querySelectorAll('.main-nav a').forEach((link) => {
-  link.addEventListener('click', () => {
-    closeMenu();
-  });
+// Any click outside the toggle (including a nav link) closes the menu.
+document.addEventListener('click', (event) => {
+  if (!menuToggle.contains(event.target)) setMenuOpen(false);
 });
 
-if (queryField && counter) {
-  queryField.addEventListener('input', () => {
-    counter.textContent = `${queryField.value.length}/500`;
-  });
-}
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') setMenuOpen(false);
+});
 
-if (contactForm) {
-  contactForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    formStatus.textContent = 'Enviando consulta...';
-    formStatus.className = 'form-status';
+const contactForm = document.querySelector('#contact-form');
+const queryField = contactForm.querySelector('textarea');
+const counter = document.querySelector('#counter');
+const formStatus = document.querySelector('#form-status');
 
-    try {
-      const response = await fetch(contactForm.action, {
-        method: 'POST',
-        body: new FormData(contactForm),
-        headers: { Accept: 'application/json' },
-      });
-      const result = await response.json().catch(() => ({}));
-      if (!response.ok || String(result.success) === 'false') throw new Error('No se pudo enviar');
-      contactForm.reset();
-      counter.textContent = '0/500';
-      formStatus.textContent = 'Gracias. Recibimos tu consulta y te contactaremos pronto.';
-      formStatus.className = 'form-status success';
-    } catch {
-      formStatus.textContent = 'No pudimos enviar el mensaje. Escribinos directamente por email o WhatsApp.';
-      formStatus.className = 'form-status error';
-    }
-  });
-}
+const updateCounter = () => {
+  counter.textContent = `${queryField.value.length}/${queryField.maxLength}`;
+};
+
+const showStatus = (message, type = '') => {
+  formStatus.textContent = message;
+  formStatus.className = `form-status ${type}`;
+};
+
+queryField.addEventListener('input', updateCounter);
+
+contactForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  showStatus('Enviando consulta...');
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { Accept: 'application/json' },
+    });
+    // FormSubmit can answer 200 with { success: "false" }.
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || String(result.success) === 'false') throw new Error(response.statusText);
+
+    contactForm.reset();
+    updateCounter();
+    showStatus('Gracias. Recibimos tu consulta y te contactaremos pronto.', 'success');
+  } catch {
+    showStatus('No pudimos enviar el mensaje. Escribinos directamente por email o WhatsApp.', 'error');
+  }
+});
 
 const clientGrid = document.querySelector('.client-grid');
 const carouselButtons = document.querySelectorAll('[data-carousel-direction]');
 
-if (clientGrid && carouselButtons.length) {
-  const updateCarouselButtons = () => {
-    const maxScroll = clientGrid.scrollWidth - clientGrid.clientWidth;
-    carouselButtons.forEach((button) => {
-      const direction = Number(button.dataset.carouselDirection);
-      button.disabled = direction < 0 ? clientGrid.scrollLeft <= 1 : clientGrid.scrollLeft >= maxScroll - 1;
-    });
-  };
-
+const updateCarouselButtons = () => {
+  const maxScroll = clientGrid.scrollWidth - clientGrid.clientWidth;
   carouselButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const firstCard = clientGrid.querySelector('.client-card');
-      if (!firstCard) return;
-
-      const gap = parseFloat(getComputedStyle(clientGrid).columnGap) || 0;
-      const distance = firstCard.getBoundingClientRect().width + gap;
-      const direction = Number(button.dataset.carouselDirection);
-      clientGrid.scrollBy({ left: direction * distance, behavior: 'auto' });
-    });
+    const direction = Number(button.dataset.carouselDirection);
+    button.disabled = direction < 0 ? clientGrid.scrollLeft <= 1 : clientGrid.scrollLeft >= maxScroll - 1;
   });
+};
 
-  clientGrid.addEventListener('scroll', updateCarouselButtons, { passive: true });
-  window.addEventListener('resize', updateCarouselButtons);
-  updateCarouselButtons();
-}
+carouselButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const cardWidth = clientGrid.querySelector('.client-card').getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(clientGrid).columnGap) || 0;
+    clientGrid.scrollBy({ left: Number(button.dataset.carouselDirection) * (cardWidth + gap) });
+  });
+});
+
+clientGrid.addEventListener('scroll', updateCarouselButtons, { passive: true });
+window.addEventListener('resize', updateCarouselButtons);
+updateCarouselButtons();

@@ -40,12 +40,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=6" />
+    <link rel="stylesheet" href="styles.css?v=7" />
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="#inicio" aria-label="Kold Refrigeración, volver al inicio">Kold Refrigeración</a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span><span class="sr-only">Abrir menú</span></button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Abrir menú</span>
+      </button>
       <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
         <a href="#empresa">La Empresa</a>
         <a href="#clientes">Nuestros Clientes</a>
@@ -55,7 +58,7 @@
 
     <main>
       <section class="hero" id="inicio">
-        <video class="hero-video" autoplay muted loop playsinline preload="none" data-src="Videos%20y%20fotos/927.mp4" data-mobile-src="Videos%20y%20fotos/927-mobile.mp4" aria-hidden="true"></video>
+        <video class="hero-video" autoplay muted loop playsinline preload="none" data-src="assets/hero/hero.mp4" data-mobile-src="assets/hero/hero-mobile.mp4" aria-hidden="true"></video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <p class="eyebrow">Refrigeración desde 1994</p>
@@ -78,37 +81,102 @@
       </section>
 
       <section class="clients section" id="clientes">
-        <div class="section-heading"><h2>Confían<br /><span>en nosotros:</span></h2><div class="client-controls" role="group" aria-label="Navegación de clientes"><button type="button" data-carousel-direction="-1" aria-label="Ver clientes anteriores" disabled><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button type="button" data-carousel-direction="1" aria-label="Ver clientes siguientes"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></div>
+        <div class="section-heading">
+          <h2>Confían<br /><span>en nosotros:</span></h2>
+          <div class="client-controls" role="group" aria-label="Navegación de clientes">
+            <button type="button" data-carousel-direction="-1" aria-label="Ver clientes anteriores" disabled>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
+            </button>
+            <button type="button" data-carousel-direction="1" aria-label="Ver clientes siguientes">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </button>
+          </div>
+        </div>
         <div class="client-grid" role="region" aria-label="Logos de clientes" aria-roledescription="carrusel" tabindex="0">
-          <article class="client-card client-card-dark"><img class="client-logo" src="Telplast.png" width="400" height="114" loading="lazy" decoding="async" alt="Telplast" /><h3>Telplast</h3></article>
-          <article class="client-card"><img class="client-logo" src="Ministerio de justicia 2.jpg" width="600" height="137" loading="lazy" decoding="async" alt="Ministerio de Seguridad y Justicia" /><h3>Ministerio de Seguridad y Justicia</h3></article>
-          <article class="client-card client-card-dark"><img class="client-logo" src="bendito verano.webp" width="480" height="117" loading="lazy" decoding="async" alt="Bendito Verano" /><h3>Bendito Verano</h3></article>
-          <article class="client-card"><img class="client-logo" src="ministerio de educacion.png" width="399" height="51" loading="lazy" decoding="async" alt="Ministerio de Educación" /><h3>Ministerio de Educación</h3></article>
-          <article class="client-card client-card-dark"><img class="client-logo" src="cotillon juliana.webp" width="600" height="179" loading="lazy" decoding="async" alt="Cotillon Juliana" /><h3>Cotillon Juliana</h3></article>
-          <article class="client-card"><img class="client-logo" src="estudio marengo.jpg" width="600" height="140" loading="lazy" decoding="async" alt="Estudio Marengo" /><h3>Estudio Marengo</h3></article>
-          <article class="client-card"><img class="client-logo" src="Colegio agustinos recoletos.png" width="195" height="220" loading="lazy" decoding="async" alt="Colegio Agustinos Recoletos" /><h3>Colegio Agustinos Recoletos</h3></article>
-          <article class="client-card"><img class="client-logo" src="samar inmobiliaria.png" width="301" height="78" loading="lazy" decoding="async" alt="Samar Inmobiliaria" /><h3>Samar Inmobiliaria</h3></article>
-          <article class="client-card"><img class="client-logo" src="parroquia san jose.jpg" width="300" height="300" loading="lazy" decoding="async" alt="Parroquia San Jose" /><h3>Parroquia San Jose</h3></article>
-          <article class="client-card"><img class="client-logo" src="Quimtex.png" width="131" height="47" loading="lazy" decoding="async" alt="Quimtex" /><h3>Quimtex</h3></article>
-          <article class="client-card"><img class="client-logo client-logo-dark" src="Setubal Fitness.png" width="300" height="300" loading="lazy" decoding="async" alt="Setubal Fitness" /><h3>Setubal Fitness</h3></article>
+          <article class="client-card client-card-dark">
+            <img class="client-logo" src="assets/clients/telplast.png" width="400" height="114" loading="lazy" decoding="async" alt="Telplast" />
+            <h3>Telplast</h3>
+          </article>
+          <article class="client-card">
+            <img class="client-logo" src="assets/clients/ministerio-justicia.jpg" width="600" height="137" loading="lazy" decoding="async" alt="Ministerio de Seguridad y Justicia" />
+            <h3>Ministerio de Seguridad y Justicia</h3>
+          </article>
+          <article class="client-card client-card-dark">
+            <img class="client-logo" src="assets/clients/bendito-verano.webp" width="480" height="117" loading="lazy" decoding="async" alt="Bendito Verano" />
+            <h3>Bendito Verano</h3>
+          </article>
+          <article class="client-card">
+            <img class="client-logo" src="assets/clients/ministerio-educacion.png" width="399" height="51" loading="lazy" decoding="async" alt="Ministerio de Educación" />
+            <h3>Ministerio de Educación</h3>
+          </article>
+          <article class="client-card client-card-dark">
+            <img class="client-logo" src="assets/clients/cotillon-juliana.webp" width="600" height="179" loading="lazy" decoding="async" alt="Cotillon Juliana" />
+            <h3>Cotillon Juliana</h3>
+          </article>
+          <article class="client-card">
+            <img class="client-logo" src="assets/clients/estudio-marengo.jpg" width="600" height="140" loading="lazy" decoding="async" alt="Estudio Marengo" />
+            <h3>Estudio Marengo</h3>
+          </article>
+          <article class="client-card">
+            <img class="client-logo" src="assets/clients/colegio-agustinos-recoletos.png" width="195" height="220" loading="lazy" decoding="async" alt="Colegio Agustinos Recoletos" />
+            <h3>Colegio Agustinos Recoletos</h3>
+          </article>
+          <article class="client-card">
+            <img class="client-logo" src="assets/clients/samar-inmobiliaria.png" width="301" height="78" loading="lazy" decoding="async" alt="Samar Inmobiliaria" />
+            <h3>Samar Inmobiliaria</h3>
+          </article>
+          <article class="client-card">
+            <img class="client-logo" src="assets/clients/parroquia-san-jose.jpg" width="300" height="300" loading="lazy" decoding="async" alt="Parroquia San Jose" />
+            <h3>Parroquia San Jose</h3>
+          </article>
+          <article class="client-card">
+            <img class="client-logo" src="assets/clients/quimtex.png" width="131" height="47" loading="lazy" decoding="async" alt="Quimtex" />
+            <h3>Quimtex</h3>
+          </article>
+          <article class="client-card">
+            <img class="client-logo client-logo-dark" src="assets/clients/setubal-fitness.png" width="300" height="300" loading="lazy" decoding="async" alt="Setubal Fitness" />
+            <h3>Setubal Fitness</h3>
+          </article>
         </div>
       </section>
 
       <section class="contact section" id="contacto">
         <div class="contact-layout">
-          <div class="contact-copy"><h2>Hablemos sobre la solución que necesitás.</h2><p>Presupuestamos sin cargo.</p><div class="contact-data">
-            <a href="mailto:kold.refrigeracion@gmail.com"><svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>kold.refrigeracion@gmail.com</span></a>
-            <a href="https://wa.me/543424364254?text=Hola%2C%20quiero%20pedir%20un%20presupuesto." target="_blank" rel="noreferrer"><svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>+54 342 436-4254</span></a>
-            <a href="https://www.instagram.com/kold.refrigeracion/" target="_blank" rel="noreferrer"><svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="#4DA3FF"/></svg><span>@kold.refrigeracion</span></a>
-            <p><svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Santa Fe Capital y alrededores</span></p>
+          <div class="contact-copy">
+            <h2>Hablemos sobre la solución que necesitás.</h2>
+            <p>Presupuestamos sin cargo.</p>
+            <div class="contact-data">
+              <a href="mailto:kold.refrigeracion@gmail.com">
+                <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
+                <span>kold.refrigeracion@gmail.com</span>
+              </a>
+              <a href="https://wa.me/543424364254?text=Hola%2C%20quiero%20pedir%20un%20presupuesto." target="_blank" rel="noreferrer">
+                <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" /></svg>
+                <span>+54 342 436-4254</span>
+              </a>
+              <a href="https://www.instagram.com/kold.refrigeracion/" target="_blank" rel="noreferrer">
+                <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r=".6" fill="#4DA3FF" /></svg>
+                <span>@kold.refrigeracion</span>
+              </a>
+              <p>
+                <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z" /><circle cx="12" cy="9" r="2.5" /></svg>
+                <span>Santa Fe Capital y alrededores</span>
+              </p>
+            </div>
+            <a class="review-link" href="https://g.page/r/CVZERf-v3p82EBM/review" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" /></svg>
+              Dejanos tu reseña en Google
+            </a>
           </div>
-          <a class="review-link" href="https://g.page/r/CVZERf-v3p82EBM/review" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>Dejanos tu reseña en Google</a></div>
           <div class="contact-actions">
-            <a class="whatsapp-card" href="https://wa.me/543424364254?text=Hola%2C%20quiero%20pedir%20un%20presupuesto." target="_blank" rel="noreferrer"><strong>Escribinos por WhatsApp</strong><span>+54 342 436-4254 <span class="mobile-hidden-arrow" aria-hidden="true">↗</span></span></a>
+            <a class="whatsapp-card" href="https://wa.me/543424364254?text=Hola%2C%20quiero%20pedir%20un%20presupuesto." target="_blank" rel="noreferrer">
+              <strong>Escribinos por WhatsApp</strong>
+              <span>+54 342 436-4254 <span class="mobile-hidden-arrow" aria-hidden="true">↗</span></span>
+            </a>
             <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/kold.refrigeracion@gmail.com" method="POST">
               <input type="hidden" name="_subject" value="Nueva consulta desde koldrefrigeracion.com.ar" />
               <input type="hidden" name="_template" value="table" />
-              <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
               <label>Email<input type="email" name="email" required autocomplete="email" /></label>
               <label>Nombre<input type="text" name="nombre" required autocomplete="name" /></label>
               <label>Consulta<textarea name="consulta" maxlength="500" required></textarea><span class="counter" id="counter">0/500</span></label>
@@ -120,7 +188,14 @@
       </section>
     </main>
 
-    <footer class="site-footer"><a class="brand" href="#inicio">Kold Refrigeración</a><p>kold.refrigeracion@gmail.com · +54 342 436-4254</p><a class="footer-social" href="https://www.instagram.com/kold.refrigeracion/" target="_blank" rel="noreferrer" aria-label="Instagram de Kold Refrigeración"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg></a><p>© 2026 Kold Refrigeración</p></footer>
-    <script src="script.js?v=3"></script>
+    <footer class="site-footer">
+      <a class="brand" href="#inicio">Kold Refrigeración</a>
+      <p>kold.refrigeracion@gmail.com · +54 342 436-4254</p>
+      <a class="footer-social" href="https://www.instagram.com/kold.refrigeracion/" target="_blank" rel="noreferrer" aria-label="Instagram de Kold Refrigeración">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r=".6" fill="currentColor" /></svg>
+      </a>
+      <p>© 2026 Kold Refrigeración</p>
+    </footer>
+    <script src="script.js?v=4"></script>
   </body>
 </html>
