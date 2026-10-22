@@ -1,8 +1,8 @@
 # Kold Refrigeración
 
-Sitio web de una empresa familiar de refrigeración de Santa Fe, Argentina, que trabaja desde 1994 con clientes residenciales, comerciales e industriales. Es una landing de una sola página pensada para que quien necesita un equipo o un service entienda rápido qué hace la empresa, vea con quién trabajó y pida un presupuesto por WhatsApp o por mail.
+Sitio web de una empresa familiar de refrigeración en Santa Fe, Argentina, que trabaja desde 1994 con clientes residenciales, comerciales e industriales. Es una landing de una sola página pensada para que quien necesita un equipo o un service entienda rápido qué hace la empresa, vea con quién trabajó y pida un presupuesto por WhatsApp o por mail.
 
-**🔗 En vivo: [koldrefrigeracion.com.ar](https://koldrefrigeracion.com.ar)**
+**🔗 Web Activa: [koldrefrigeracion.com.ar](https://koldrefrigeracion.com.ar)**
 
 <p align="center">
   <img src="docs/captura-inicio.webp" alt="Inicio del sitio en escritorio: el título «La ausencia de calor, nuestra especialidad» sobre un video de fondo" width="760">
@@ -18,7 +18,7 @@ Sitio web de una empresa familiar de refrigeración de Santa Fe, Argentina, que 
 
 Quien busca una empresa de refrigeración quiere saber tres cosas antes de llamar:
 
-- **¿Trabajan con lo que necesito?** El inicio dice qué hace la empresa en una frase, y la sección La Empresa separa los tres tipos de cliente: residencial, comercial e industrial.
+
 - **¿Puedo confiar?** Más de 30 años en el rubro y un carrusel con clientes reales, entre ellos organismos públicos, colegios y comercios de la ciudad.
 - **¿Cómo pido un presupuesto?** El botón principal lleva directo a contacto, donde están WhatsApp, mail, Instagram, un formulario y un enlace para dejar una reseña en Google.
 
@@ -32,8 +32,7 @@ Quien busca una empresa de refrigeración quiere saber tres cosas antes de llama
 
 ## Detalles técnicos
 
-| | |
-|---|---|
+
 | **Stack** | HTML, CSS y JavaScript sin frameworks, sin dependencias y sin paso de build |
 | **Peso** | ~360 KB para ver la página completa; el video de fondo (6 a 8 MB) se descarga aparte, sin bloquear la carga |
 | **SEO** | Datos estructurados `schema.org/HVACBusiness` para búsquedas locales, Open Graph para la vista previa en WhatsApp y redes, URL canónica, `robots.txt` y `sitemap.xml` |
@@ -60,9 +59,6 @@ Algunas decisiones:
 └── CNAME                 Dominio propio para GitHub Pages
 ```
 
-## Correr localmente
-
-No requiere instalación. Se puede abrir `index.html` directamente en el navegador o levantar un servidor estático:
 
 ```bash
 npx serve .
@@ -72,6 +68,6 @@ Para clonar con los videos hace falta tener [Git LFS](https://git-lfs.com) insta
 
 ## Autoría
 
-Diseño y desarrollo: **[Quantum Dev](https://www.instagram.com/developerquantum/)**.
+Diseño y desarrollo: **[Quantum Dev](https://www.instagram.com/developerquantum/)**. de Leguizamón Francis.
 
 El nombre, el logo, las fotos, los videos y los textos pertenecen a Kold Refrigeración y no pueden reutilizarse. Los logos de clientes pertenecen a sus respectivos dueños. El código está publicado como muestra de trabajo.
